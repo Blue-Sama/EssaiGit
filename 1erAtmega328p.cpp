@@ -2,7 +2,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include <Wire.h>
-
+// Bonjour, je suis un teste d'ajout de code.
 byte Lu;
 
 void setup ()
@@ -22,15 +22,15 @@ ConfigRegOVI2C_QVGA_YUV();
 
 
 
-    TCCR1A = ( (1 << COM1B0));// Toggle OC1B (PB2) on compare match // QUAND CES DEUX LA NE SONT PAS SUR LA MËME LIGNE CA FAIT DE LA MERDE
-    TCCR1B = ((1 << WGM12) | (1 << CS10)); // Active CTC & Prescal à 1
+    TCCR1A = ( (1 << COM1B0));// Toggle OC1B (PB2) on compare match // QUAND CES DEUX LA NE SONT PAS SUR LA MÃ‹ME LIGNE CA FAIT DE LA MERDE
+    TCCR1B = ((1 << WGM12) | (1 << CS10)); // Active CTC & Prescal Ã  1
     TIMSK1 = 0; // Des&ctive tout le registre des interrupts
-    OCR1A = 3; // le toggle sur output compare match se fait lorsque le counteur atteind 3, redémarre à 0
-    //DDRB |= (1<<PB1); // Met le PB1 en sortie qui correspond à OC1A qui va toggle
-    DDRB |= (1<<PB2); // Met aussi PB2 en sortie qui correspond à OC1B qui va toggle
-    sei(); // Active les interruptions également
+    OCR1A = 3; // le toggle sur output compare match se fait lorsque le counteur atteind 3, redÃ©marre Ã  0
+    //DDRB |= (1<<PB1); // Met le PB1 en sortie qui correspond Ã  OC1A qui va toggle
+    DDRB |= (1<<PB2); // Met aussi PB2 en sortie qui correspond Ã  OC1B qui va toggle
+    sei(); // Active les interruptions Ã©galement
     TCNT1 = 0;
-    Serial.println("Clk Réglée");
+    Serial.println("Clk RÃ©glÃ©e");
 
 
   }
@@ -99,9 +99,9 @@ int arduino_i2c_read(byte address, byte reg, byte value)
   void ConfigRegOVI2C_QVGA_YUV()
   {
 
-    arduino_i2c_read(0x21,0x3E,Lu); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK Divisé par 2
+    arduino_i2c_read(0x21,0x3E,Lu); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK DivisÃ© par 2
     arduino_i2c_read(0x21,0x72,Lu);
-    arduino_i2c_read(0x21,0x73,Lu); // Même chose que 0x3E
+    arduino_i2c_read(0x21,0x73,Lu); // MÃªme chose que 0x3E
     arduino_i2c_read(0x21,0x17,Lu); // Conf HSTART
     arduino_i2c_read(0x21,0x18,Lu); // Conf HSTOP
     arduino_i2c_read(0x21,0x32,Lu); // Conf HREF
@@ -111,9 +111,9 @@ int arduino_i2c_read(byte address, byte reg, byte value)
     arduino_i2c_read(0x21,0xff,Lu); // Conf VREF
 
 
-    arduino_i2c_write(0x21,0x3E,0x19); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK Divisé par 2
+    arduino_i2c_write(0x21,0x3E,0x19); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK DivisÃ© par 2
     arduino_i2c_write(0x21,0x72,0x11);
-    arduino_i2c_write(0x21,0x73,0xF1); // Même chose que 0x3E
+    arduino_i2c_write(0x21,0x73,0xF1); // MÃªme chose que 0x3E
     arduino_i2c_write(0x21,0x17,0x16); // Conf HSTART
     arduino_i2c_write(0x21,0x18,0x04); // Conf HSTOP
     arduino_i2c_write(0x21,0x32,0x24); // Conf HREF
@@ -123,9 +123,9 @@ int arduino_i2c_read(byte address, byte reg, byte value)
     arduino_i2c_write(0x21,0xff,0xff); // Conf VREF
     // Configuration en QVGA
 
-    arduino_i2c_read(0x21,0x3E,Lu); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK Divisé par 2
+    arduino_i2c_read(0x21,0x3E,Lu); // Scaling PCLK enable + Scaling parameter can be adjusted manually + PCLK DivisÃ© par 2
     arduino_i2c_read(0x21,0x72,Lu);
-    arduino_i2c_read(0x21,0x73,Lu); // Même chose que 0x3E
+    arduino_i2c_read(0x21,0x73,Lu); // MÃªme chose que 0x3E
     arduino_i2c_read(0x21,0x17,Lu); // Conf HSTART
     arduino_i2c_read(0x21,0x18,Lu); // Conf HSTOP
     arduino_i2c_read(0x21,0x32,Lu); // Conf HREF
@@ -150,8 +150,8 @@ int arduino_i2c_read(byte address, byte reg, byte value)
     arduino_i2c_read(0x21,0xff,Lu); // C
 
 
-    arduino_i2c_write(0x21,0x12,0x10); // COM7 YUV ACTIVE et QVGA Sélectionné
-    arduino_i2c_write(0x21,0x8C,0x00); // RGB444 desactivé
+    arduino_i2c_write(0x21,0x12,0x10); // COM7 YUV ACTIVE et QVGA SÃ©lectionnÃ©
+    arduino_i2c_write(0x21,0x8C,0x00); // RGB444 desactivÃ©
     arduino_i2c_write(0x21,0x04,0x00); // COM1
     arduino_i2c_write(0x21,0x40,0xC0); // COM15
     arduino_i2c_write(0x21,0x14,0x6A); // COM9
@@ -390,7 +390,7 @@ int arduino_i2c_read(byte address, byte reg, byte value)
 
     Serial.println();
     Serial.println();
-    arduino_i2c_write(0x21,0x12,0x80); // Reset tous les registres SCCB à leur valeur d'origine
+    arduino_i2c_write(0x21,0x12,0x80); // Reset tous les registres SCCB Ã  leur valeur d'origine
     Serial.println();
     Serial.println();
 
